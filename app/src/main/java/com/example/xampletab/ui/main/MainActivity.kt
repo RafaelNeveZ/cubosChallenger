@@ -1,9 +1,10 @@
-package com.example.xampletab
+package com.example.xampletab.ui.main
 
 import android.os.Bundle
 import com.google.android.material.tabs.TabLayout
 import androidx.viewpager.widget.ViewPager
 import androidx.appcompat.app.AppCompatActivity
+import com.example.xampletab.R
 import com.example.xampletab.ui.main.adapter.SectionsPagerAdapter
 
 class MainActivity : AppCompatActivity() {

@@ -5,13 +5,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import models.Movie
 import models.MovieResult
 
-interface PageViewContract {
+interface MoviesListContract {
     interface View {
         fun showLoadingDialog()
         fun hideLoadingDialog()
-        fun showError(message: String)
         fun bindMovieList(movie: MovieResult)
     }
 

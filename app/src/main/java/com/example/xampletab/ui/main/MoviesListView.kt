@@ -1,21 +1,26 @@
 package com.example.xampletab.ui.main
 
+import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
-import androidx.core.view.size
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.xampletab.R
 import com.example.xampletab.ui.main.adapter.MovieCardAdapter
+import com.example.xampletab.ui.movieDescription.MovieDescription
+import com.example.xampletab.util.putExtraJson
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_main.*
+import kotlinx.android.synthetic.main.movie_item.*
+import models.Movie
 import models.MovieResult
 
-class MoviesFragment : Fragment(), PageViewContract.View {
-    private val presenter = PageViewPresenter()
+class MoviesListView : Fragment(), MoviesListContract.View {
+    private val presenter = MoviesListPresenter()
     private val actionGenre:String = "28"
     private val comedyGenre:String = "35"
     private val romanceGenre:String = "10749"
@@ -51,8 +56,8 @@ class MoviesFragment : Fragment(), PageViewContract.View {
     companion object {
         private const val ARG_SECTION_NUMBER = "genre"
         @JvmStatic
-        fun newInstance(sectionNumber: Int): MoviesFragment {
-            return MoviesFragment().apply {
+        fun newInstance(sectionNumber: Int): MoviesListView {
+            return MoviesListView().apply {
                 arguments = Bundle().apply {
                     putInt(ARG_SECTION_NUMBER, sectionNumber)
                 }
@@ -68,19 +73,23 @@ class MoviesFragment : Fragment(), PageViewContract.View {
         loading?.visibility = View.GONE
     }
 
-    override fun showError(message: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
     override fun bindMovieList(movie: MovieResult) {
         val recyclerView = movieList
-        recyclerView.adapter =
-            MovieCardAdapter(
-                movie.results,
-                requireContext()
-            )
+        recyclerView.adapter = createAdapter(movie.results)
         val layoutManager = StaggeredGridLayoutManager(
             2, StaggeredGridLayoutManager.VERTICAL)
         recyclerView.layoutManager = layoutManager
+    }
+    private fun createAdapter(movies: ArrayList<Movie>): MovieCardAdapter {
+        return MovieCardAdapter (movies){
+                view: View, movie: Movie ->
+
+            Snackbar.make(view, movie.title, Snackbar.LENGTH_LONG).show()
+              val intent = Intent (requireContext(), MovieDescription::class.java)
+
+            intent.putExtraJson(movie)
+
+            activity?.startActivity(intent)
+        }
     }
 }

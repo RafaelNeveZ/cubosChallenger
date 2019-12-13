@@ -7,9 +7,9 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class PageViewPresenter : PageViewContract.Presenter {
+class MoviesListPresenter : MoviesListContract.Presenter {
 
-    lateinit var view: PageViewContract.View
+    lateinit var view: MoviesListContract.View
 
     override fun getMovies(genero: String) {
         view.showLoadingDialog()
@@ -29,6 +29,8 @@ class PageViewPresenter : PageViewContract.Presenter {
             }
         })
     }
+
+
 
 
 }
