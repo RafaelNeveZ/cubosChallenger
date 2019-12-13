@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Cinema Cubos</string>
+    <string name="tab_acao_title">Ação</string>
+    <string name="tab_comedia_title">Comédia</string>
+    <string name="tab_romance_title">Romance</string>
+    <string name="tab_terror_title">Terror</string>
+</resources>
