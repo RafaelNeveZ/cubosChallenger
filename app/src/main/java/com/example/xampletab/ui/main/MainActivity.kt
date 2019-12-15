@@ -1,17 +1,19 @@
 package com.example.xampletab.ui.main
 
 import android.os.Bundle
-import com.google.android.material.tabs.TabLayout
-import androidx.viewpager.widget.ViewPager
 import androidx.appcompat.app.AppCompatActivity
+import androidx.viewpager.widget.ViewPager
 import com.example.xampletab.R
 import com.example.xampletab.ui.main.adapter.SectionsPagerAdapter
+import com.google.android.material.tabs.TabLayout
 
-class MainActivity : AppCompatActivity() {
+
+class MainActivity : AppCompatActivity(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         val sectionsPagerAdapter =
             SectionsPagerAdapter(
                 this,
@@ -23,4 +25,7 @@ class MainActivity : AppCompatActivity() {
         tabs.setupWithViewPager(viewPager)
 
     }
+
+
 }
+

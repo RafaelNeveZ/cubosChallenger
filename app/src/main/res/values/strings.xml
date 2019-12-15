@@ -4,4 +4,7 @@
     <string name="tab_comedia_title">Comédia</string>
     <string name="tab_romance_title">Romance</string>
     <string name="tab_terror_title">Terror</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

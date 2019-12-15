@@ -23,7 +23,7 @@ class SectionsPagerAdapter(private val context: Context, fm: FragmentManager) :
 
     override fun getItem(position: Int): Fragment {
         return MoviesListView.newInstance(
-            position + 1
+            position +1
         )
     }
 

@@ -11,9 +11,9 @@ class MoviesListPresenter : MoviesListContract.Presenter {
 
     lateinit var view: MoviesListContract.View
 
-    override fun getMovies(genero: String) {
+    override fun getMovies(genero: String, page:String) {
         view.showLoadingDialog()
-        val call = RetrofitClientInstance().movieService().getMovies(APIQuerrys().getMoviesByGenre(genero))
+        val call = RetrofitClientInstance().movieService().getMovies(APIQuerrys().getMoviesByGenre(genero,page))
         call.enqueue(object : Callback<MovieResult> {
             override fun onResponse(call: Call<MovieResult>?,
                                     response: Response<MovieResult>?) {
@@ -30,7 +30,23 @@ class MoviesListPresenter : MoviesListContract.Presenter {
         })
     }
 
+    override fun getQueryMovies(text: String, page: String) {
+        view.showLoadingDialog()
+        val call = RetrofitClientInstance().movieService().getMovies(APIQuerrys().getQuerryedMovies(text,page))
+        call.enqueue(object : Callback<MovieResult> {
+            override fun onResponse(call: Call<MovieResult>?,
+                                    response: Response<MovieResult>?) {
+                view.hideLoadingDialog()
+                response?.body()?.let {
+                    val movie: MovieResult = it
+                    view.querryItens(movie)
+                }
 
-
+            }
+            override fun onFailure(call: Call<MovieResult>, t: Throwable?) {
+                view.hideLoadingDialog()
+            }
+        })
+    }
 
 }

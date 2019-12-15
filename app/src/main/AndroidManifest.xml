@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ui.movieDescription.MovieDescription"
-            android:parentActivityName=".ui.main.MainActivity">
+            android:parentActivityName=".ui.main.MainActivity"
+            >
         </activity>
         <activity
             android:name=".ui.main.MainActivity"

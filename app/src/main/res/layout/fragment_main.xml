@@ -5,12 +5,14 @@
     android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/CorFundo"
     tools:context=".ui.main.MoviesListView">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/movieList"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        android:backgroundTint="@android:color/transparent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
